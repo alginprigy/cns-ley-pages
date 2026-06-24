@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>leyu · 再次遇见，持续关注</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f6f8fc;
+      color: #1e2a3a;
+      line-height: 1.6;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      background: #0b131f;
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-brand {
+      color: #d4e2f5;
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #b2c9e6;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #f0c674;
+    }
+
+    /* 深色头图 hero */
+    .hero {
+      background: linear-gradient(145deg, #0f1b2c 0%, #1a2b40 100%);
+      color: #e3edf5;
+      padding: 4.5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 350;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto 1.8rem;
+      font-size: 1.1rem;
+      color: #bfd0e3;
+    }
+
+    .hero .sub-line {
+      font-size: 0.95rem;
+      color: #a5bdd9;
+      border-top: 1px solid #2f4059;
+      padding-top: 1.2rem;
+      display: inline-block;
+    }
+
+    /* 正文浅色区域 */
+    .content-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .intro-section {
+      margin-bottom: 3rem;
+    }
+
+    .intro-section h2 {
+      font-size: 1.6rem;
+      font-weight: 450;
+      color: #0b1b2b;
+      margin-bottom: 1rem;
+      border-left: 4px solid #d69f4c;
+      padding-left: 1rem;
+    }
+
+    .intro-section p {
+      margin-bottom: 1.2rem;
+      color: #2c3e50;
+    }
+
+    .intro-section a {
+      color: #b8863a;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .intro-section a:hover {
+      color: #8f6425;
+    }
+
+    /* 三个场景模块——卡片网格 */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 2.5rem 0 3rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 1.4rem 2rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      border: 1px solid #e9eef5;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+    }
+
+    .scene-card .emoji-icon {
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .scene-card h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: #172b3a;
+    }
+
+    .scene-card p {
+      color: #3a4c5e;
+      font-size: 0.95rem;
+    }
+
+    /* 常见说明 / FAQ 摘要 */
+    .faq-summary {
+      background: #eef3fa;
+      border-radius: 24px;
+      padding: 2rem 2rem 1.8rem;
+      margin: 2.8rem 0 1.5rem;
+    }
+
+    .faq-summary h3 {
+      font-size: 1.3rem;
+      font-weight: 480;
+      margin-bottom: 1.2rem;
+      color: #152433;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .faq-item {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #dce3ed;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #1e2f44;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: #3c546b;
+      font-size: 0.95rem;
+    }
+
+    .faq-a a {
+      color: #b8863a;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .faq-a a:hover {
+      color: #7a5c2a;
+    }
+
+    /* 额外提示区块 */
+    .note-box {
+      background: #fcf8f0;
+      border-radius: 16px;
+      padding: 1.2rem 1.6rem;
+      margin: 2rem 0 1rem;
+      border-left: 5px solid #d69f4c;
+    }
+
+    .note-box p {
+      color: #2a3b4b;
+      font-size: 0.98rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 900px) {
+      .scene-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        padding: 0.8rem 1.2rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .scene-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .content-wrap {
+        padding: 1.5rem 1rem 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <nav class="top-nav">
+    <span class="nav-brand">leyu · 备忘</span>
+    <ul class="nav-links">
+      <li><a href="#">回顾</a></li>
+      <li><a href="#">场景</a></li>
+      <li><a href="#">说明</a></li>
+      <li><a href="#">收藏</a></li>
+    </ul>
+  </nav>
+
+  <!-- 深色头图 hero -->
+  <header class="hero">
+    <h1>再次遇见 · 持续关注</h1>
+    <p>一个安静的位置，记录着值得反复回来的地方。不张扬，不催促，只在你需要时重新打开。</p>
+    <div class="sub-line">—— 收藏即约定，再次访问即是默契 ——</div>
+  </header>
+
+  <!-- 浅色正文区域 -->
+  <main class="content-wrap">
+
+    <!-- 核心介绍 嵌入链接 -->
+    <section class="intro-section">
+      <h2>关于 leyu</h2>
+      <p>
+        每个人都有自己的网络角落，有些页面是为了匆匆一瞥，而有些则值得放进书签，在某个安静的时刻再次打开。  
+        <a href="https://cns-ley.com.cn">leyu</a> 就是这样一类存在：不喧哗，不刷存在感，但当你回来时，它总在原处。  
+        它更像一个老朋友，轻声说一句“你来了”，然后继续陪伴。  
+      </p>
+      <p>
+        不需要每次都从头寻找，不需要记住冗长的地址——只需要一次收藏，之后就是无数次自然的回访。  
+        这种体验很轻，轻到几乎感觉不到，却让人安心。
+      </p>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <section>
+      <h2 style="font-size:1.4rem; font-weight:450; margin-bottom:0.5rem; color:#142433;">三个熟悉的场景</h2>
+      <div class="scene-grid">
+        <div class="scene-card">
+          <div class="emoji-icon">🔖</div>
+          <h3>再次打开</h3>
+          <p>书签栏里它一直在那里。某个午后，或深夜，双击、回车，熟悉的页面缓缓出现——不需要重新搜索，不需要回忆。</p>
+        </div>
+        <div class="scene-card">
+          <div class="emoji-icon">📌</div>
+          <h3>持续关注</h3>
+          <p>有些内容值得跟进，有些动态不想错过。保持一个固定的“联络点”，比刷新社交媒体更安静、更直接。</p>
+        </div>
+        <div class="scene-card">
+          <div class="emoji-icon">🔄</div>
+          <h3>收藏的惯性</h3>
+          <p>收藏夹会越来越满，但真正反复回去的只有几个。leyu 是那种会留在“常用”列表里的名字，无需理由。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 常见说明 FAQ 摘要 -->
+    <section class="faq-summary">
+      <h3>❓ 一些常见说明</h3>
+      <div class="faq-item">
+        <div class="faq-q">为什么值得把 leyu 加入书签？</div>
+        <div class="faq-a">因为它是一个持续的锚点。你不需要记住任何额外的东西，一次收藏，之后每次回访都自然发生。关联地址：<a href="https://cns-ley.com.cn">leyu</a>。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">如何保证再次访问时体验一致？</div>
+        <div class="faq-a">页面结构保持稳定，内容更新以温和的方式呈现。你回到的是一个熟悉的环境，而不是每次变样的临时页面。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">收藏夹太乱怎么办？</div>
+        <div class="faq-a">可以单独建立一个“常回”文件夹，把 <a href="https://cns-ley.com.cn">leyu</a> 放进去，和真正重要的几个页面在一起，简洁有序。</div>
+      </div>
+    </section>
+
+    <!-- 温和提示 -->
+    <div class="note-box">
+      <p>💡 慢慢来，不急着点，不急着收藏。当你觉得某个地方值得回来第二次，leyu 就会自然进入你的回访清单。</p>
+    </div>
+
+  </main>
+
+</body>
+</html>
