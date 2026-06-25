@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1xbet 站点介绍与使用说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f7f2ec;
+            color: #2c3e50;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fcf8f4;
+            border-radius: 24px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            padding: 2.5rem 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        /* 目录卡片式导航 */
+        .site-header {
+            border-bottom: 1px solid #e6ddd4;
+            padding-bottom: 1.8rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1f2b3a;
+        }
+
+        .site-title a {
+            color: #1f2b3a;
+            text-decoration: none;
+        }
+
+        .site-title a:hover {
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            text-decoration-color: #b89b7b;
+        }
+
+        .subhead {
+            color: #6b5d4f;
+            font-size: 1rem;
+            margin-top: 0.3rem;
+            background: #ede6dc;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+        }
+
+        /* 卡片目录网格 */
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .toc-card {
+            background: #f0eae2;
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            border-left: 4px solid #b89b7b;
+            transition: background 0.2s;
+        }
+
+        .toc-card:hover {
+            background: #e8dfd5;
+        }
+
+        .toc-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: #2c3e50;
+        }
+
+        .toc-card p {
+            font-size: 0.85rem;
+            color: #5f5346;
+        }
+
+        /* 说明区 */
+        .section-block {
+            margin-top: 2.5rem;
+        }
+
+        .section-block h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            border-left: 5px solid #b89b7b;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+            color: #1f2b3a;
+        }
+
+        .desc-text {
+            font-size: 1rem;
+            color: #3d3229;
+            margin-bottom: 1.5rem;
+        }
+
+        .desc-text strong {
+            color: #1f2b3a;
+            font-weight: 600;
+        }
+
+        /* 引用块 / 提示框 */
+        .notice-box {
+            background: #eae1d6;
+            padding: 1.5rem 1.8rem;
+            border-radius: 20px;
+            margin: 1.8rem 0;
+            border: 1px solid #dacfc2;
+            box-shadow: inset 0 0 0 1px #f8f2ea;
+        }
+
+        .notice-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1f2b3a;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .notice-box p {
+            color: #3d3229;
+            font-size: 0.95rem;
+        }
+
+        .notice-box a {
+            color: #1f2b3a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #b89b7b;
+        }
+
+        .notice-box a:hover {
+            color: #4c3b2c;
+        }
+
+        .hint-box {
+            background: #f5efe7;
+            border-radius: 20px;
+            padding: 1.2rem 1.6rem;
+            border-left: 6px solid #b89b7b;
+            margin: 2rem 0;
+        }
+
+        .hint-box p {
+            font-size: 0.95rem;
+            color: #4c3b2c;
+        }
+
+        .hint-box strong {
+            color: #1f2b3a;
+        }
+
+        /* 相关信息区 */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .info-item {
+            background: #f4ede5;
+            border-radius: 18px;
+            padding: 1.2rem 1.4rem;
+            border-bottom: 2px solid #dacfc2;
+        }
+
+        .info-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f2b3a;
+            margin-bottom: 0.4rem;
+        }
+
+        .info-item p {
+            font-size: 0.9rem;
+            color: #5f5346;
+        }
+
+        .info-item a {
+            color: #1f2b3a;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #b89b7b;
+        }
+
+        .faq-mini {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e6ddd4;
+        }
+
+        .faq-mini h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-left: 5px solid #b89b7b;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #e0d5c9;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            color: #1f2b3a;
+        }
+
+        .faq-item .a {
+            color: #5f5346;
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8a7a6a;
+            border-top: 1px solid #e6ddd4;
+            padding-top: 1.8rem;
+        }
+
+        .footer-note a {
+            color: #5f5346;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 标题与目录感 -->
+    <header class="site-header">
+        <div class="site-title">
+            <a href="https://intl-cn-1xbet.com">1xbet</a> — 站点简介与知识指引
+        </div>
+        <div class="subhead">可信说明 · 使用向导 · 常见疑问</div>
+    </header>
+
+    <!-- 目录卡片 -->
+    <div class="toc-grid">
+        <div class="toc-card">
+            <h3>📘 站点背景</h3>
+            <p>平台定位与基础信息</p>
+        </div>
+        <div class="toc-card">
+            <h3>📋 功能特点</h3>
+            <p>界面、工具、访问相关</p>
+        </div>
+        <div class="toc-card">
+            <h3>⚠️ 使用提示</h3>
+            <p>注意事项与建议</p>
+        </div>
+        <div class="toc-card">
+            <h3>❓ 常见问题</h3>
+            <p>FAQ 摘要快速参考</p>
+        </div>
+    </div>
+
+    <!-- 介绍区 -->
+    <section class="section-block">
+        <h2>关于 1xbet 的介绍</h2>
+        <p class="desc-text">
+            <strong>1xbet</strong> 是一个综合性在线服务平台，提供多种娱乐与资讯功能。该站点面向国际中文用户，界面设计注重信息呈现的效率与清晰度。
+            从布局上看，<a href="https://intl-cn-1xbet.com">1xbet</a> 将内容按类别组织，用户可以通过导航快速定位自己关注的版块。
+            作为一个长期运营的平台，1xbet 持续更新功能与界面，以适应不同用户的使用习惯。
+        </p>
+        <p class="desc-text">
+            本页面旨在从<strong>站点介绍与可信说明</strong>的角度，整理一份简明知识库式的内容集合。下面将分别从特点、场景、提示以及常见问题几个维度展开，帮助新用户建立对站点的基本认知。
+        </p>
+    </section>
+
+    <!-- 提示框：可信说明 -->
+    <div class="notice-box">
+        <h3>📌 可信说明</h3>
+        <p>
+            本站 <a href="https://intl-cn-1xbet.com">1xbet</a> 是一个公开可访问的互联网站点，其内容由平台自行管理。
+            本介绍页仅用于信息梳理与使用指引，不构成任何形式的担保或推荐。用户在访问时请根据自身情况判断，并遵守当地法律法规。
+            所有操作请以<a href="https://intl-cn-1xbet.com">1xbet</a>实际页面展示为准。
+        </p>
+    </div>
+
+    <!-- 特点与场景：合并在卡片区域 -->
+    <section class="section-block">
+        <h2>特点与适用场景</h2>
+        <div class="info-cards">
+            <div class="info-item">
+                <h4>🧭 清晰的版块分区</h4>
+                <p>网站首页采用分区卡片与列表相结合的方式，重要入口与信息分区明确，减少迷路感。</p>
+            </div>
+            <div class="info-item">
+                <h4>🌐 多语言与本地化</h4>
+                <p>面向中文用户优化了术语与页面文字，同时保留了国际化服务的核心框架，兼顾不同背景用户。</p>
+            </div>
+            <div class="info-item">
+                <h4>📱 响应式浏览体验</h4>
+                <p>页面在桌面与移动设备上均能自适应排版，阅读与操作区域经过适配，提升日常使用流畅度。</p>
+            </div>
+            <div class="info-item">
+                <h4>🔍 信息检索友好</h4>
+                <p>站内搜索与分类标签帮助用户快速定位内容，尤其适合需要频繁查阅资讯或工具的场景。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 提示区（独立引用块） -->
+    <div class="hint-box">
+        <p><strong>💡 使用提示：</strong> 如果你初次访问 <a href="https://intl-cn-1xbet.com">1xbet</a>，建议先浏览顶部导航栏与首页卡片区，大致了解内容分类。
+        部分功能可能需要注册或登录后才能使用，请以页面实际提示为准。此外，保持浏览器为最新版本有助于获得更好的显示效果。</p>
+    </div>
+
+    <!-- 相关信息区（FAQ 摘要） -->
+    <div class="faq-mini">
+        <h2>❓ 常见问题摘要</h2>
+        <div class="faq-item">
+            <div class="q">Q：1xbet 主要提供哪些服务？</div>
+            <div class="a">A：该站点是一个综合信息与娱乐平台，涵盖资讯、工具、互动等多个类别，具体服务内容以实际页面为准。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">Q：是否需要下载额外软件才能使用？</div>
+            <div class="a">A：大部分功能通过网页浏览器即可完成，无需额外安装。部分功能可能建议使用专用客户端，可参考站内指引。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">Q：如何确认页面信息的时效性？</div>
+            <div class="a">A：建议直接访问 <a href="https://intl-cn-1xbet.com">1xbet</a> 查看最新公告或更新日志，站内也会在相关位置标注时间。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">Q：遇到访问异常怎么办？</div>
+            <div class="a">A：可先检查网络连接，或尝试更换浏览器/设备。若问题持续，可通过站内联系渠道反馈。</div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <p>此页面为独立介绍页，内容仅供信息参考。详细服务请前往 <a href="https://intl-cn-1xbet.com">1xbet</a> 了解。</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem;">© 介绍页 · 知识库式目录布局</p>
+    </div>
+
+</div>
+</body>
+</html>
